@@ -49,12 +49,15 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+
+plugins=(git vi-mode)
 
 # User configuration
 
-  export PATH="/home/craig/npm-global/bin:/home/craig/python-scripts:/home/craig/usr/bin/python:/home/craig/bin:/home/craig/bin:/usr/local/heroku/bin:/usr/local/heroku/bin:/home/craig/npm-global/bin:/home/craig/python-scripts:/home/craig/usr/bin/python:/home/craig/bin:/home/craig/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+#  export PATH="~/.npm-packages/bin:/usr/bin/tidy:/home/craig/bin:/home/craig/usr/local/bin:/home/craig/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/craig/.npm-packages/lib/node_modules/phantomjs:/home/craig/.npm-packages/lib/node_modules/slimerjs/bin:/home/craig/.npm-packages/lib/node_modules/phantomjs/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+export PATH=~/.npm-packages/lib/node_modules:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -133,3 +136,20 @@ alias gco='git checkout'
 
 alias release='rsync -r --exclude-from "rsync_excludes.txt" . craig@dev0:/var/www/html/portfolio/loudondesign/wp-content/themes/html5blank/'
 alias mount-dev0='sshfs -o allow_other -o IdentityFile=/home/craig/.ssh/id_rsa craig@46.101.15.151:/ /home/craig/sites/dev0/'
+
+if [ -f ~/.bash_aliases  ]; then
+    . ~/.bash_aliases
+fi
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=10

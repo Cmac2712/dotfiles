@@ -1,0 +1,12 @@
+*
+
+!*.gitignore
+!*.bash_aliases
+!*.bashrc
+!*.bash_profile
+!*bin/
+!*/tmux/
+!*/tmux/**
+!*.vimrc
+!*.zshrc
+!.zsh-update

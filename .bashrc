@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+>>>>>>> 12a8b5ed465b4ebb9fa184e7468d9b90ba5d1013
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -65,6 +72,7 @@ xterm*|rxvt*)
     ;;
 esac
 
+<<<<<<< HEAD
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -86,6 +94,8 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+=======
+>>>>>>> 12a8b5ed465b4ebb9fa184e7468d9b90ba5d1013
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -95,8 +105,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+<<<<<<< HEAD
 source /etc/bash_completion.d/password-store
 
+=======
+>>>>>>> 12a8b5ed465b4ebb9fa184e7468d9b90ba5d1013
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -104,7 +117,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+<<<<<<< HEAD
 shopt -s globstar 
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+=======
+## Bash tab completion for pass
+source /etc/bash_completion.d/password-store
+shopt -s globstar
+>>>>>>> 12a8b5ed465b4ebb9fa184e7468d9b90ba5d1013
