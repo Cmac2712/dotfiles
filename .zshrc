@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/craig/.oh-my-zsh
+ export ZSH=/home/craig/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,15 +49,12 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-
-plugins=(git vi-mode)
+plugins=(git)
 
 # User configuration
 
-#  export PATH="~/.npm-packages/bin:/usr/bin/tidy:/home/craig/bin:/home/craig/usr/local/bin:/home/craig/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/craig/.npm-packages/lib/node_modules/phantomjs:/home/craig/.npm-packages/lib/node_modules/slimerjs/bin:/home/craig/.npm-packages/lib/node_modules/phantomjs/bin"
+  export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-export PATH=~/.npm-packages/lib/node_modules:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,71 +82,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias lhost="cd /var/www/html/"
-alias cl="clear"
-alias c="clear"
-alias filesizes="ls --sort=size -lh ."
-
-alias hidefiles="sudo fusermount -u ~/crypt"
-alias showfiles="encfs ~/.crypt ~/crypt"
-
-## Instead of just rm files put them in the trash
-
-alias tp="trash-put"
-alias tl="trash-list"
-alias rm="trash-put"
-
-## Get public IP address
-
-alias myip="curl ipinfo.io/ip"
-alias myipinfo="curl ipinfo.io"
-
-# Restart Unity
-
-alias reunity="setsid unity"
-
-# SSH into DigitalOcean droplet
-
-alias ssh-do-media="ssh root@178.62.10.183"
-alias dev0="ssh craig@46.101.15.151"
-
-# ls
-alias ls="ls -l"
-alias tmux="tmux -2"
-
-## Git
-
-alias g='git' 
-alias gau='git add -u' 
-alias gaa='git add -A'
-alias gpshom='git push origin master'
-alias gplom='git pull origin master'
-alias gs='git status'
-alias gpl='git pull'
-alias gbr='git branch'
-alias gcm='git commit -m'
-alias glp='git log --pretty=oneline'
-alias gco='git checkout'
-
-# # Release
-
-alias release='rsync -r --exclude-from "rsync_excludes.txt" . craig@dev0:/var/www/html/portfolio/loudondesign/wp-content/themes/html5blank/'
-alias mount-dev0='sshfs -o allow_other -o IdentityFile=/home/craig/.ssh/id_rsa craig@46.101.15.151:/ /home/craig/sites/dev0/'
-
-if [ -f ~/.bash_aliases  ]; then
-    . ~/.bash_aliases
-fi
-
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-    zle reset-prompt
-}
-
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey -M viins 'kj' vi-cmd-mode
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-export KEYTIMEOUT=10
