@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
- export ZSH=/home/craig/.oh-my-zsh
+export ZSH=/home/craig/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,12 +49,14 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git vi-mode)
 
 # User configuration
 
-  export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+#  export PATH="~/.npm-packages/bin:/usr/bin/tidy:/home/craig/bin:/home/craig/usr/local/bin:/home/craig/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/craig/.npm-packages/lib/node_modules/phantomjs:/home/craig/.npm-packages/lib/node_modules/slimerjs/bin:/home/craig/.npm-packages/lib/node_modules/phantomjs/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+export PATH=~/.npm-packages/lib/node_modules:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,3 +84,20 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+if [ -f ~/.bash_aliases  ]; then
+    . ~/.bash_aliases
+fi
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=10
