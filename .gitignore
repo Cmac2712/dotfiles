@@ -5,9 +5,8 @@
 !*.bashrc
 !*.bash_profile
 !*bin/
-!*tmux/
-!*tmux/*
-!*tmux/**
+!*/tmux/
+!*/tmux/**
 !*.vimrc
 !*.zshrc
 !.zsh-update
