@@ -1,0 +1,7 @@
+pane	0	0	:vim	1	:*	0	:/home/craig/sites/smws	1	vim	:vim .
+pane	0	1	:..css/wordpress	0	:-	0	:/home/craig/sites/smws/skin/frontend/indez/smws	0	gulp	:gulp                    
+pane	0	1	:..css/wordpress	0	:-	1	:/home/craig/sites/smws/skin/frontend/indez/smws/css/core.css/wordpress	1	zsh	:
+pane	0	1	:..css/wordpress	0	:-	2	:/home/craig	0	nodejs	:zsh
+window	0	0	1	:*	c51d,209x55,0,0,0
+window	0	1	0	:-	3eb1,209x55,0,0{67x55,0,0,1,141x55,68,0[141x30,68,0,2,141x24,68,31,3]}
+state	0	

@@ -1,0 +1,14 @@
+pane	0	0	:vim	1	:*	0	:/home/craig/sites/smws/blog/wp-content/themes/smws	1	vim	:vim .
+pane	0	0	:vim	1	:*	1	:/home/craig/sites/smws/blog/wp-content/themes/smws	0	zsh	:
+pane	0	1	:~/sites/smws	0	:-	0	:/home/craig/sites/smws/skin/frontend/indez/smws	0	gulp	:gulp                    
+pane	0	1	:~/sites/smws	0	:-	1	:/home/craig/sites/smws	1	zsh	:
+pane	0	1	:~/sites/smws	0	:-	2	:/home/craig	0	nodejs	:zsh
+pane	gddc	0	:~	0	:-	0	:/home/craig	0	zsh	:
+pane	gddc	0	:~	0	:-	1	:/home/craig	1	zsh	:
+pane	gddc	0	:~	0	:-	2	:/home/craig	0	nodejs	:/usr/bin/nodejs /home/craig/.npm-packages/bin/vtop
+pane	gddc	1	:~	1	:*	0	:/home/craig	1	zsh	:
+window	0	0	1	:*	39fb,209x55,0,0[209x47,0,0,0,209x7,0,48,12]
+window	0	1	0	:-	4f71,209x55,0,0{67x55,0,0,1,141x55,68,0[141x31,68,0,2,141x23,68,32,3]}
+window	gddc	0	0	:-	36a0,209x55,0,0{104x55,0,0,5,104x55,105,0[104x28,105,0,7,104x26,105,29,8]}
+window	gddc	1	1	:*	c523,209x55,0,0,6
+state	0	gddc

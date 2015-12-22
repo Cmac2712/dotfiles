@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/craig/bin'
+let g:netrw_dirhist_2='/home/craig/sites/laings/skin/frontend/indez/laings/css'
+let g:netrw_dirhist_3='/home/craig/sites/smws/skin/frontend/indez/smws/js'
+let g:netrw_dirhist_4='/home/craig/sites/smws/skin/frontend/indez/smws/css'
+let g:netrw_dirhist_5='/home/craig/sites/smws/skin/frontend/indez/smws/css/core.css'
