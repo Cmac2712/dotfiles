@@ -11,4 +11,8 @@ alias dev3="ssh -p22 cmacintyre@192.168.0.50"
 export VISUAL=vim
 export EDITOR=$VISUAL
 
-. ~/.bashrc
+git pull
+
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc  
+fi
