@@ -15,7 +15,7 @@ Plugin 'unblevable/quick-scope'
 " Plugin 'pangloss/vim-javascript'
 " Plugin 'Shougo/neocomplete.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-commentary'
@@ -25,7 +25,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'morhetz/gruvbox'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'rking/ag.vim'
 Plugin 'bling/vim-airline'
@@ -33,6 +33,10 @@ Plugin 'bling/vim-airline'
 Plugin 'lilydjwg/colorizer'
 Plugin 'justinmk/vim-gtfo'
 Plugin 'powerline/fonts'
+Plugin 'vim-vdebug/vdebug'
+Plugin 'dbakker/vim-projectroot'
+" Plugin 'captbaritone/better-indent-support-for-php-with-html'
+" Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 " Bundle 'wakatime/vim-wakatime'
@@ -346,10 +350,38 @@ highlight VertSplit cterm=none ctermbg=none ctermfg=247
 set wildignore+=*node_modules/,*.git/,*.sass-cache/
 
 " Find Path
-set path +=skin/frontend/indez/**
-set path +=app/design/frontend/indez/**
+set path +=skin/frontend/**
+set path +=app/design/frontend/**
+set path +=blog/
+
+" Search
+set incsearch
+set hlsearch
 
 " Highlight lines which exceed 80 columns
 " http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " match OverLength /\%81v.\+/
+
+" Drop Vdebug settings at the end of the file " 
+" https://devforgalaxy.github.io/en/2016/09/14/debug-containerised-php-app-using-xdebug-with-vim-and-vdebug-en.html
+let g:vdebug_options = {
+\ 'break_on_open': 1,
+\ 'path_maps': {'/var/www/html/': '/home/craig/sites/dockerized-magento/'},
+\ 'port': '9000',
+\ 'watch_window_style': 'compact'
+\ }
+
+let g:vdebug_keymap = {
+\ 'run' : '5',
+\ 'run_to_cursor' : '9',
+\ 'step_over' : '2',
+\ 'step_into' : '3',
+\ 'step_out' : '4',
+\ 'close' : '6',
+\ 'detach' : '7',
+\ 'set_breakpoint' : 's',
+\ 'get_context' : 'c',
+\ 'eval_under_cursor' : 'u',
+\ 'eval_visual' : 'v',
+\}
