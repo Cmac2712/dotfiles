@@ -12,34 +12,45 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'unblevable/quick-scope'
-" Plugin 'pangloss/vim-javascript'
 " Plugin 'Shougo/neocomplete.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
+
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vinegar'
-Plugin 'morhetz/gruvbox'
+
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+" Plugin 'plasticboy/vim-markdown'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'rking/ag.vim'
 Plugin 'bling/vim-airline'
 " Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'lilydjwg/colorizer'
+" Plugin 'lilydjwg/colorizer'
 Plugin 'justinmk/vim-gtfo'
 Plugin 'powerline/fonts'
-Plugin 'vim-vdebug/vdebug'
+" Plugin 'vim-vdebug/vdebug'
 Plugin 'dbakker/vim-projectroot'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'SirVer/ultisnips'
+Plugin 'morhetz/gruvbox'
+Plugin 'flazz/vim-colorschemes'
+
+Plugin 'epilande/vim-es2015-snippets'
+Plugin 'epilande/vim-react-snippets'
+Plugin 'pangloss/vim-javascript'
+Plugin 'neoclide/vim-jsx-improve'
+Plugin 'MaxMEllon/vim-jsx-pretty'
+Plugin 'leafgarland/typescript-vim'
 " Plugin 'captbaritone/better-indent-support-for-php-with-html'
 " Plugin 'terryma/vim-multiple-cursors'
-
 call vundle#end()
 " Bundle 'wakatime/vim-wakatime'
+"
 
 "----------------------------------------------------------------------------
 " Color Scheme
@@ -61,6 +72,9 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_files = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrp_custom_ignore = {
+    \ 'dir': 'node_modules$', 
+\}
 
 noremap <leader>f<space> :CtrlP
 noremap <leader>cpb :CtrlPBuffer<cr>
@@ -159,6 +173,12 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 let g:user_emmet_leader_key=','
 let g:user_emmet_mode='a'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends': 'jsx',
+\      'quote_char': "'",
+\  },
+\}
 imap hh ,,
 
 
@@ -200,7 +220,7 @@ vnoremap <C-c> "+yya
 vnoremap <C-v> "*pi
 
 " Toggle :set paste
-set pastetoggle=<F3>
+set pastetoggle=<Leader>p
 
 " Traverse buffer list
 nnoremap <silent> [b :bprevious<CR>
@@ -287,7 +307,12 @@ let g:netrw_liststyle=1
 " :nnoremap <A-l> <C-w>l
 
 
+"----------------------------------------------------------------------------
+" Vim Markdown Preview
+"----------------------------------------------------------------------------
 
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_github=1
 
 "----------------------------------------------------------------------------
 " Misc
@@ -330,8 +355,12 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
-set shiftwidth=4 softtabstop=4
 set number
+
+" TABS
+" set shiftwidth=4 softtabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Practical Vim page 95
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -347,7 +376,7 @@ set fillchars=vert:│,fold:-
 highlight VertSplit cterm=none ctermbg=none ctermfg=247
 
 " Wildignore
-set wildignore+=*node_modules/,*.git/,*.sass-cache/
+set wildignore+=*/node_modules/,*.git/,*.sass-cache/
 
 " Find Path
 set path +=skin/frontend/**
@@ -380,8 +409,20 @@ let g:vdebug_keymap = {
 \ 'step_out' : '4',
 \ 'close' : '6',
 \ 'detach' : '7',
-\ 'set_breakpoint' : 's',
-\ 'get_context' : 'c',
-\ 'eval_under_cursor' : 'u',
-\ 'eval_visual' : 'v',
+\ 'set_breakpoint' : '<leader>b',
+\ 'get_context' : '<leader>c',
+\ 'eval_under_cursor' : '<leader>u',
+\ 'eval_visual' : '<leader>e',
 \}
+
+let g:vdebug_keymap['set_breakpoint'] = '<leader>b'
+let g:vdebug_keymap['get_context'] = '<leader>c'
+let g:vdebug_keymap['eval_under_cursor'] = '<leader>u'
+let g:vdebug_keymap['eval_visual'] = '<leader>e'
+
+"----------------------------------------------------------------------------
+" Ultisnips
+"----------------------------------------------------------------------------
+
+let g:UltiSnipsExpandTrigger="<c-k>"
+imap jj <c-k>
